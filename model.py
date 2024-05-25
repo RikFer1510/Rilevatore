@@ -4,7 +4,7 @@ from PIL import Image, ImageOps
 
 import numpy as np
 
-def get_class(model_path,labels_path,image_path,):
+def get_class(model_path,labels_path,image_path):
     np.set_printoptions(suppress=True)
     model = load_model(model_path, compile=False)
     class_names = open(labels_path, "r",encoding = "utf-8").readlines()
@@ -19,4 +19,4 @@ def get_class(model_path,labels_path,image_path,):
     index = np.argmax(prediction)
     class_name = class_names[index]
     confidence_score = prediction[0][index]
-    return(class_name[2:],confidence_score*100)
+    return(class_name[2:])
